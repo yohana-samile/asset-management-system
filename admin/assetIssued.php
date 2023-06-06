@@ -17,6 +17,7 @@
                         <th>S/N</th>
                         <th>Asset Name</th>
                         <th>From Category</th>
+                        <th>Qty</th>
                         <th>Issued_By</th>
                         <th>From Department</th>
                         <th>Time Issued</th>
@@ -40,6 +41,7 @@
                                         <td><?php echo $sn++; ?> </td>
                                         <td><?php echo $get_category_result['asset_name']; ?> </td>
                                         <td><?php echo $get_category_result['category_name']; ?> </td>
+                                        <td><?php echo $get_category_result['quantity']; ?> </td>
                                         <td><?php echo $get_category_result['first_name']." ".$get_category_result['last_name']; ?> </td>
                                         <td><?php echo $get_category_result['departmentName']; ?> </td>
                                         <td><?php echo $get_category_result['timeBorrowed']; ?> </td>

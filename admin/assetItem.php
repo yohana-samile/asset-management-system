@@ -62,7 +62,7 @@
                                                     <a href="" data-target="#editAsset<?php echo $get_asset_result['asset_id']; ?>" data-toggle="modal"><i class="fa fa-edit text-warning"></i></a>
                                                 </div>
                                                 <div class="col-md-4">
-                                                    <a href="" data-target="#deletAsset<?php echo $get_asset_result['asset_id']; ?>" data-toggle="modal"><i class="fa fa-trash-o text-danger"></i></a>
+                                                    <a href="" data-target="#deletAsset<?php echo $get_asset_result['asset_id']; ?>" data-toggle="modal"><i class="fa fa-trash text-danger"></i></a>
                                                 </div>
                                             </div>
                                         </td>
@@ -95,7 +95,26 @@
                                                     <div class="form-group">
                                                         <label for="brande_name">Enter Brand Name</label>
                                                         <input type="text"  class="form-control" name="brande_name" value="<?php echo $get_asset_result['brande_name']; ?>" required>
-                                                    </div>                    
+                                                    </div> 
+                                                    <!-- for ram, processor and disck -->
+                                                    <?php if($get_asset_result['ramSize'] != '-'): ?>
+                                                        <div class="form-group">
+                                                        <label for="brande_name">Ram Size</label>
+                                                            <input type="text"  class="form-control" name="ramSize" value="<?php echo $get_asset_result['ramSize']; ?>" required>
+                                                        </div>  
+                                                    <?php endif; ?>
+                                                    <?php if($get_asset_result['diskSize'] != '-'): ?>
+                                                        <div class="form-group">
+                                                            <label for="brande_name">Disk Size</label>
+                                                            <input type="text"  class="form-control" name="diskSize" value="<?php echo $get_asset_result['diskSize']; ?>" required>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                    <?php if($get_asset_result['proccessorSpeed'] != '-'): ?>
+                                                        <div class="form-group">
+                                                        <label for="brande_name">proccessor Speed</label>
+                                                            <input type="text"  class="form-control" name="proccessorSpeed" value="<?php echo $get_asset_result['proccessorSpeed']; ?>" required>
+                                                        </div>                    
+                                                    <?php endif; ?>
                                                     <div class="form-group">
                                                         <select name="whichCategory" class="form-control" id="whichCategory" required>
                                                             <option hidden>Choose Category</option>

@@ -90,7 +90,7 @@
                                                 elseif($get_asset_result['requestStatusResult'] == "accepted"){
                                                     if($get_asset_result['employee_id'] == $_SESSION['userData']['employee_id']){
                                                         if($get_asset_result['requestStatusResult'] == "accepted"){ ?>
-                                                            <form action="requestAssetAction.php" method="post">
+                                                            <form action="requestAssetAction.php?assetId=<?php echo $get_asset_result['asset_id']; ?>" method="post">
                                                                 <input type="number" name="issuedId" value="<?php echo $get_asset_result['issuedId']; ?>" hidden required>
                                                                 <input type="number" name="assetQuantity" value="<?php echo $get_asset_result['assetQuantity'] + 1; ?>" hidden required>
                                                                 <input type="text" name="requestStatusResult" value="Returned" required hidden>

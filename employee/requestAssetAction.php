@@ -12,11 +12,7 @@
         $timeReturned = $_POST['timeReturned'];
         $timeReturned = '0000-00-00 00:00:00';
 
-        $getAssetQt = $conn->query("SELECT * FROM asset_managed WHERE asset_id  = '$assetBorrowed' ");
-        $assetQt = mysqli_fetch_array($getAssetQt);
-        $quantityDecrementOne = $assetQt['quantity'] - 1;
         $conn->query("UPDATE `assetissued` SET `whoBorrow` = '$whoBorrow', `assetBorrowed` = '$assetBorrowed', `requestStatusResult` = '$requestStatusResult', `assetQuantity` = '$assetQuantity', `timeBorrowed` = '$timeBorrowed' where `issuedId` = '$issuedId' ");
-        $conn->query("UPDATE `asset_managed` SET `quantity` = '$quantityDecrementOne' where `asset_id` = '$assetBorrowed' ");
         $registerCategory = $conn->query("INSERT INTO system_logs VALUES(NULL, 'Borrow Asset', '$timeBorrowed', '$whoBorrow') ");
         if($registerCategory){
             $_SESSION['success'] = "Asset Issued";
@@ -39,7 +35,7 @@
         $assetQt = mysqli_fetch_array($getAssetQt);
         $quantityDecrementOne = $assetQt['quantity'] + 1;
         $conn->query("UPDATE assetissued set `requestStatusResult` = '$requestStatusResult', `timeReturned` = '$timeReturned', `assetQuantity` = '$assetQuantity' where `issuedId` = '$issuedId' ");
-        $conn->query("UPDATE `asset_managed` SET `quantity` = '$quantityDecrementOne' where `asset_id` = '$assetBorrowed' ");
+        $conn->query("UPDATE `asset_managed` SET `quantity` = '$quantityDecrementOne' where `asset_id` = {$_GET['assetId']} ");
         $registerCategory = $conn->query("INSERT INTO system_logs VALUES(NULL, 'Return Asset', '$timeReturned', '$whoReturn') ");
         if($registerCategory){
             $_SESSION['success'] = "Asset Returned";
